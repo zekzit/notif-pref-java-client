@@ -1,8 +1,10 @@
 import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
+import io.swagger.client.api.NotificationTopicApi;
 import io.swagger.client.api.SoftwareComponentApi;
 import io.swagger.client.api.SupportedCommChannelApi;
 import io.swagger.client.api.SupportedLanguageApi;
+import io.swagger.client.model.NotificationTopic;
 import io.swagger.client.model.SoftwareComponent;
 import io.swagger.client.model.SupportedCommChannel;
 import io.swagger.client.model.SupportedLanguage;
@@ -26,14 +28,47 @@ public class TestClient {
      */
     private void execUC1(ApiClient apiClient) {
         try {
+            //SOFT COMP
             createSoftwareComponent(apiClient,"Application","t1t-dummy-sc01","","v1");
+            //LANG
             createLanguage(apiClient,"nl-BE");
             createLanguage(apiClient,"fr-BE");
             createLanguage(apiClient,"en-EN");
+            //CHANNELS
             createChannel(apiClient,"SMS");
             createChannel(apiClient,"EMAIL");
+            createChannel(apiClient,"SOCKET");
+            //THEMA
+
+            //NOTIF TOPIC
+            createNotificationTopic(apiClient,"TopicSC01A","This is topic A",null);
+            createNotificationTopic(apiClient,"TopicSC01B","This is topic B",null);
+            //NOTIF TOPIC CONF
+
+            //NOTIF TOPIC PREF
+
+            //USER NOTIF PROFILE
+
+            //USER CONTACT DETAILS
         } catch (ApiException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void createNotificationTopic(ApiClient apiClient, String id, String desc, String themeid) throws ApiException {
+        NotificationTopicApi notApi = new NotificationTopicApi(apiClient);
+        NotificationTopic nTopic = new NotificationTopic();
+        nTopic.setDescription(desc);
+        nTopic.setThemeId(themeid);
+        nTopic.setTitle(id);
+        String res = null;
+        try {
+            res = notApi.notificationTopicGetTopicByTitle(nTopic.getTitle());
+        } catch (ApiException e) {
+            ;//ignore
+        }
+        if(res==null){
+            notApi.notificationTopicCreate(nTopic);
         }
     }
 
