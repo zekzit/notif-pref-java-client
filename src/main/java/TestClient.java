@@ -1,13 +1,10 @@
 import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
-import io.swagger.client.api.NotificationTopicApi;
-import io.swagger.client.api.SoftwareComponentApi;
-import io.swagger.client.api.SupportedCommChannelApi;
-import io.swagger.client.api.SupportedLanguageApi;
-import io.swagger.client.model.NotificationTopic;
-import io.swagger.client.model.SoftwareComponent;
-import io.swagger.client.model.SupportedCommChannel;
-import io.swagger.client.model.SupportedLanguage;
+import io.swagger.client.api.*;
+import io.swagger.client.model.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by michallispashidis on 11/05/16.
@@ -39,12 +36,13 @@ public class TestClient {
             createChannel(apiClient,"EMAIL");
             createChannel(apiClient,"SOCKET");
             //THEMA
-
+            createTheme(apiClient,"Themesc01A","Theme for sc01-A");
+            createTheme(apiClient,"Themesc01B","Theme for sc01-B");
             //NOTIF TOPIC
             createNotificationTopic(apiClient,"TopicSC01A","This is topic A",null);
             createNotificationTopic(apiClient,"TopicSC01B","This is topic B",null);
             //NOTIF TOPIC CONF
-
+            
             //NOTIF TOPIC PREF
 
             //USER NOTIF PROFILE
@@ -52,6 +50,27 @@ public class TestClient {
             //USER CONTACT DETAILS
         } catch (ApiException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Create Theme
+     * @param apiClient
+     */
+    private void createTheme(ApiClient apiClient, String title, String description) throws ApiException {
+        ThemeApi themeApi = new ThemeApi(apiClient);
+        Theme theme = new Theme();
+        theme.setTitle(title);
+        theme.setDescription(description);
+        List<Theme> themes = new ArrayList<Theme>();
+        try{
+            String query = "{\"where\":{\"title\":\""+title+"\"}}";
+            themes = themeApi.themeFind(query);
+        }catch (ApiException e) {
+            ;//ignore
+        }
+        if(themes==null ||themes.size()==0){
+            themeApi.themeCreate(theme);
         }
     }
 
