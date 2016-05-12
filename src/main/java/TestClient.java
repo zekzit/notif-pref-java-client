@@ -1,3 +1,4 @@
+import com.google.gson.Gson;
 import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
 import io.swagger.client.api.*;
@@ -5,11 +6,20 @@ import io.swagger.client.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by michallispashidis on 11/05/16.
  */
 public class TestClient {
+    private static Logger _LOG = Logger.getGlobal();
+    private static Gson gson;
+
+    static{
+        gson= new Gson();
+    }
+
     public TestClient(){}
     public static void main(String []args){
         TestClient tc = new TestClient();
@@ -24,25 +34,28 @@ public class TestClient {
      * @param apiClient
      */
     private void execUC1(ApiClient apiClient) {
+        _LOG.log(Level.INFO,"Execute User Case 1");
+        _LOG.log(Level.INFO,"-------------------");
         try {
             //SOFT COMP
-            createSoftwareComponent(apiClient,"Application","t1t-dummy-sc01","","v1");
+            final SoftwareComponent softCompSC01A = createSoftwareComponent(apiClient, "Application", "t1t-dummy-sc01", "", "v1");
             //LANG
-            createLanguage(apiClient,"nl-BE");
-            createLanguage(apiClient,"fr-BE");
-            createLanguage(apiClient,"en-EN");
+            final SupportedLanguage lang01 = createLanguage(apiClient, "nl-BE");
+            final SupportedLanguage lang02 = createLanguage(apiClient, "fr-BE");
+            final SupportedLanguage lang03 = createLanguage(apiClient, "en-EN");
             //CHANNELS
-            createChannel(apiClient,"SMS");
-            createChannel(apiClient,"EMAIL");
-            createChannel(apiClient,"SOCKET");
+            final SupportedCommChannel channel01 = createChannel(apiClient, "SMS");
+            final SupportedCommChannel channel02 = createChannel(apiClient, "EMAIL");
+            final SupportedCommChannel channel03 = createChannel(apiClient, "SOCKET");
             //THEMA
-            createTheme(apiClient,"Themesc01A","Theme for sc01-A");
-            createTheme(apiClient,"Themesc01B","Theme for sc01-B");
+            final Theme theme01 = createTheme(apiClient, "Themesc01A", "Theme for sc01-A");
+            final Theme theme02 = createTheme(apiClient, "Themesc01B", "Theme for sc01-B");
             //NOTIF TOPIC
-            createNotificationTopic(apiClient,"TopicSC01A","This is topic A",null);
-            createNotificationTopic(apiClient,"TopicSC01B","This is topic B",null);
+            final NotificationTopic notTopic01 = createNotificationTopic(apiClient, "TopicSC01A", "This is topic A", null);
+            final NotificationTopic notTopic02 = createNotificationTopic(apiClient, "TopicSC01B", "This is topic B", null);
             //NOTIF TOPIC CONF
-            
+            createNotificationTopicConfig(apiClient,softCompSC01A.getGuid(),notTopic01.getId(),channel01.getSuppChannel(),lang01.getSuppLang(),true,true);
+            createNotificationTopicConfig(apiClient,softCompSC01A.getGuid(),notTopic01.getId(),channel01.getSuppChannel(),lang02.getSuppLang(),true,false);
             //NOTIF TOPIC PREF
 
             //USER NOTIF PROFILE
@@ -53,11 +66,40 @@ public class TestClient {
         }
     }
 
+    private NotificationTopicConfig createNotificationTopicConfig(ApiClient apiClient, String softCompId, String notTopicId,String suppChannelId, String suppLangId,Boolean isDefaultChannel,Boolean isDefaultLang) throws ApiException {
+        _LOG.log(Level.INFO,"->create NotifTopicConfig:");
+        NotificationTopicConfigApi confApi = new NotificationTopicConfigApi(apiClient);
+        NotificationTopicConfig conf = new NotificationTopicConfig();
+        conf.setIsDefaultChannel(isDefaultChannel);
+        conf.setIsDefaultLang(isDefaultLang);
+        conf.setNotificationTopicId(notTopicId);
+        conf.setSoftwareComponentId(softCompId);
+        conf.setSupportedCommChannelId(suppChannelId);
+        conf.setSupportedLanguageId(suppLangId);
+        List<NotificationTopicConfig> res = new ArrayList<NotificationTopicConfig>();
+        try {
+            String query = "{\"where\":{\"notificationTopicId\":\""+notTopicId+"\",\"softwareComponentId\":\""+softCompId+"\",\"supportedLanguageId\":\""+suppLangId+"\",\"supportedCommChannelId\":\""+suppChannelId+"\"}}";
+            res  = confApi.notificationTopicConfigFind(query);
+        } catch (ApiException e) {
+            ;//ignore
+        }
+        if(res.size()==0){
+            NotificationTopicConfig resConfig = confApi.notificationTopicConfigCreate(conf);
+            _LOG.log(Level.INFO,gson.toJson(resConfig));
+            return resConfig;
+        }else{
+            _LOG.log(Level.INFO,"exists:"+gson.toJson(res));
+            //return gson.fromJson(res,NotificationTopic.class);
+            return null;
+        }
+    }
+
     /**
      * Create Theme
      * @param apiClient
      */
-    private void createTheme(ApiClient apiClient, String title, String description) throws ApiException {
+    private Theme createTheme(ApiClient apiClient, String title, String description) throws ApiException {
+        _LOG.log(Level.INFO,"->create Theme:");
         ThemeApi themeApi = new ThemeApi(apiClient);
         Theme theme = new Theme();
         theme.setTitle(title);
@@ -70,11 +112,17 @@ public class TestClient {
             ;//ignore
         }
         if(themes==null ||themes.size()==0){
-            themeApi.themeCreate(theme);
+            final Theme resTheme = themeApi.themeCreate(theme);
+            _LOG.log(Level.INFO,gson.toJson(resTheme));
+            return resTheme;
+        }else{
+            _LOG.log(Level.INFO,"exists:"+gson.toJson(theme));
+            return (themes.size()>0)?themes.get(0):null;
         }
     }
 
-    private void createNotificationTopic(ApiClient apiClient, String id, String desc, String themeid) throws ApiException {
+    private NotificationTopic createNotificationTopic(ApiClient apiClient, String id, String desc, String themeid) throws ApiException {
+        _LOG.log(Level.INFO,"->create Notification Topic:");
         NotificationTopicApi notApi = new NotificationTopicApi(apiClient);
         NotificationTopic nTopic = new NotificationTopic();
         nTopic.setDescription(desc);
@@ -87,11 +135,17 @@ public class TestClient {
             ;//ignore
         }
         if(res==null){
-            notApi.notificationTopicCreate(nTopic);
+            final NotificationTopic resNottop = notApi.notificationTopicCreate(nTopic);
+            _LOG.log(Level.INFO,gson.toJson(resNottop));
+            return resNottop;
+        }else{
+            _LOG.log(Level.INFO,"exists:"+gson.toJson(res));
+            return gson.fromJson(res,NotificationTopic.class);
         }
     }
 
-    private void createChannel(ApiClient apiClient, String s) throws ApiException {
+    private SupportedCommChannel createChannel(ApiClient apiClient, String s) throws ApiException {
+        _LOG.log(Level.INFO,"->create Supported Channel:");
         SupportedCommChannelApi capi = new SupportedCommChannelApi(apiClient);
         SupportedCommChannel supportedCommChannel=null;
         try {
@@ -102,11 +156,17 @@ public class TestClient {
         if(supportedCommChannel==null){
             SupportedCommChannel supc = new SupportedCommChannel();
             supc.setSuppChannel(s);
-            capi.supportedCommChannelCreate(supc);
+            final SupportedCommChannel resChannel = capi.supportedCommChannelCreate(supc);
+            _LOG.log(Level.INFO,gson.toJson(resChannel));
+            return resChannel;
+        }else{
+            _LOG.log(Level.INFO,"exists:"+gson.toJson(supportedCommChannel));
+            return supportedCommChannel;
         }
     }
 
-    private void createLanguage(ApiClient apiClient, String s) throws ApiException {
+    private SupportedLanguage createLanguage(ApiClient apiClient, String s) throws ApiException {
+        _LOG.log(Level.INFO,"->create Supported Language:");
         SupportedLanguageApi supApi = new SupportedLanguageApi(apiClient);
         SupportedLanguage supportedLanguage = null;
         try {
@@ -117,7 +177,12 @@ public class TestClient {
         if(supportedLanguage==null){
             SupportedLanguage suplang = new SupportedLanguage();
             suplang.setSuppLang(s);
-            supApi.supportedLanguageCreate(suplang);
+            final SupportedLanguage resLang = supApi.supportedLanguageCreate(suplang);
+            _LOG.log(Level.INFO,gson.toJson(resLang));
+            return resLang;
+        }else{
+            _LOG.log(Level.INFO,"exists:"+gson.toJson(supportedLanguage));
+            return supportedLanguage;
         }
     }
 
@@ -128,7 +193,8 @@ public class TestClient {
         return apiClient;
     }
 
-    private void createSoftwareComponent(ApiClient apiClient, String type, String name, String parentId, String version) throws ApiException {
+    private SoftwareComponent createSoftwareComponent(ApiClient apiClient, String type, String name, String parentId, String version) throws ApiException {
+        _LOG.log(Level.INFO,"->create Software Component:");
         SoftwareComponentApi softwareComponentApi = new SoftwareComponentApi(apiClient);
         String s = null;
         try {
@@ -139,10 +205,15 @@ public class TestClient {
         if(s==null){
             SoftwareComponent sc = new SoftwareComponent();
             sc.setCompType(type);
-            sc.setName(name);
             sc.setParentId(parentId);
             sc.setVersion(version);
-            softwareComponentApi.softwareComponentCreate(sc);
+            final SoftwareComponent resSc = softwareComponentApi.softwareComponentCreate(sc);
+            _LOG.log(Level.INFO,gson.toJson(resSc));
+            return resSc;
+        }else{
+            //final SoftwareComponent resSc = softwareComponentApi.softwareComponentFindById(s,null);
+            _LOG.log(Level.INFO,"exists:"+gson.toJson(s));
+            return gson.fromJson(s,SoftwareComponent.class);//resSc;
         }
     }
 }
