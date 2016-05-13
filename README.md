@@ -37,7 +37,4 @@ After the client library is installed/deployed, you can use it in your Maven pro
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issue.
 
 ## Author
-
-
-
-
+Michallis Pashidis
