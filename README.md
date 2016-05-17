@@ -32,6 +32,11 @@ After the client library is installed/deployed, you can use it in your Maven pro
 
 ```
 
+When you like to cleanup the whole database at once.
+```sql
+truncate table notificationtopic, notificationtopicconfig, notificationtopicpreference, softwarecomponent, supportedcommchannel, supportedlanguage, theme, usercontactdetail, usernotificationprofile;
+```
+
 ## Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issue.
