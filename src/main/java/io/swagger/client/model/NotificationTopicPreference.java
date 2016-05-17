@@ -17,6 +17,7 @@ public class NotificationTopicPreference   {
   private String sourceId = null;
   private String notificationTopicId = null;
   private String userId = null;
+  private String softCompId = null;
 
   
   /**
@@ -103,7 +104,14 @@ public class NotificationTopicPreference   {
     this.userId = userId;
   }
 
-  
+  @ApiModelProperty(example = "null", value = "")
+  @JsonProperty("softCompId")
+  public String getSoftCompId() {
+    return softCompId;
+  }
+  public void setSoftCompId(final String softCompId) {
+    this.softCompId = softCompId;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -118,12 +126,13 @@ public class NotificationTopicPreference   {
         Objects.equals(this.id, notificationTopicPreference.id) &&
         Objects.equals(this.sourceId, notificationTopicPreference.sourceId) &&
         Objects.equals(this.notificationTopicId, notificationTopicPreference.notificationTopicId) &&
+        Objects.equals(this.softCompId, notificationTopicPreference.softCompId) &&
         Objects.equals(this.userId, notificationTopicPreference.userId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(prefChannel, id, sourceId, notificationTopicId, userId);
+    return Objects.hash(prefChannel, id, sourceId, notificationTopicId, userId, softCompId);
   }
 
   @Override
@@ -136,6 +145,7 @@ public class NotificationTopicPreference   {
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    notificationTopicId: ").append(toIndentedString(notificationTopicId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    softCompId: ").append(toIndentedString(softCompId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

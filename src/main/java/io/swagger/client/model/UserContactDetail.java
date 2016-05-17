@@ -17,6 +17,7 @@ public class UserContactDetail   {
   private String id = null;
   private String sourceId = null;
   private String userId = null;
+  private String softCompId = null;
 
   
   /**
@@ -103,7 +104,14 @@ public class UserContactDetail   {
     this.userId = userId;
   }
 
-  
+  @ApiModelProperty(example = "null", value = "")
+  @JsonProperty("softCompId")
+  public String getSoftCompId() {
+    return softCompId;
+  }
+  public void setSoftCompId(final String softCompId) {
+    this.softCompId = softCompId;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -118,12 +126,13 @@ public class UserContactDetail   {
         Objects.equals(this.channelDetail, userContactDetail.channelDetail) &&
         Objects.equals(this.id, userContactDetail.id) &&
         Objects.equals(this.sourceId, userContactDetail.sourceId) &&
+        Objects.equals(this.softCompId, userContactDetail.softCompId) &&
         Objects.equals(this.userId, userContactDetail.userId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(communicationChannel, channelDetail, id, sourceId, userId);
+    return Objects.hash(communicationChannel, channelDetail, id, sourceId, userId, softCompId);
   }
 
   @Override
@@ -136,6 +145,7 @@ public class UserContactDetail   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    softCompId: ").append(toIndentedString(softCompId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
