@@ -204,6 +204,7 @@ public class TestClient {
         }
         if(s==null){
             SoftwareComponent sc = new SoftwareComponent();
+            sc.name(name);
             sc.setCompType(type);
             sc.setParentId(parentId);
             sc.setVersion(version);
