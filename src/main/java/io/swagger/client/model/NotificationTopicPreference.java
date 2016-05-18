@@ -1,8 +1,8 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 
@@ -17,7 +17,7 @@ public class NotificationTopicPreference   {
   private String sourceId = null;
   private String notificationTopicId = null;
   private String userId = null;
-  private String softCompId = null;
+  private String softwareComponentId = null;
 
   
   /**
@@ -104,13 +104,20 @@ public class NotificationTopicPreference   {
     this.userId = userId;
   }
 
-  @ApiModelProperty(example = "null", value = "")
-  @JsonProperty("softCompId")
-  public String getSoftCompId() {
-    return softCompId;
+  /**
+   **/
+  public NotificationTopicPreference softwareComponentId(String softwareComponentId) {
+    this.softwareComponentId = softwareComponentId;
+    return this;
   }
-  public void setSoftCompId(final String softCompId) {
-    this.softCompId = softCompId;
+
+  @ApiModelProperty(example = "null", value = "")
+  @JsonProperty("softwareComponentId")
+  public String getSoftwareComponentId() {
+    return softwareComponentId;
+  }
+  public void setSoftwareComponentId(final String softwareComponentId) {
+    this.softwareComponentId = softwareComponentId;
   }
 
   @Override
@@ -123,16 +130,16 @@ public class NotificationTopicPreference   {
     }
     NotificationTopicPreference notificationTopicPreference = (NotificationTopicPreference) o;
     return Objects.equals(this.prefChannel, notificationTopicPreference.prefChannel) &&
-        Objects.equals(this.id, notificationTopicPreference.id) &&
-        Objects.equals(this.sourceId, notificationTopicPreference.sourceId) &&
-        Objects.equals(this.notificationTopicId, notificationTopicPreference.notificationTopicId) &&
-        Objects.equals(this.softCompId, notificationTopicPreference.softCompId) &&
-        Objects.equals(this.userId, notificationTopicPreference.userId);
+           Objects.equals(this.id, notificationTopicPreference.id) &&
+           Objects.equals(this.sourceId, notificationTopicPreference.sourceId) &&
+           Objects.equals(this.notificationTopicId, notificationTopicPreference.notificationTopicId) &&
+           Objects.equals(this.softwareComponentId, notificationTopicPreference.softwareComponentId) &&
+           Objects.equals(this.userId, notificationTopicPreference.userId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(prefChannel, id, sourceId, notificationTopicId, userId, softCompId);
+    return Objects.hash(prefChannel, id, sourceId, notificationTopicId, userId, softwareComponentId);
   }
 
   @Override
@@ -145,7 +152,7 @@ public class NotificationTopicPreference   {
     sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
     sb.append("    notificationTopicId: ").append(toIndentedString(notificationTopicId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    softCompId: ").append(toIndentedString(softCompId)).append("\n");
+    sb.append("    softwareComponentId: ").append(toIndentedString(softwareComponentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

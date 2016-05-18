@@ -1,8 +1,8 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 
@@ -66,6 +66,13 @@ public class UserNotificationProfile   {
   }
   public void setSourceUserStore(String sourceUserStore) {
     this.sourceUserStore = sourceUserStore;
+  }
+
+  /**
+   **/
+  public UserNotificationProfile softwareComponentId(String softwareComponentId) {
+    this.softwareComponentId = softwareComponentId;
+    return this;
   }
 
   @ApiModelProperty(example = "null", required = true, value = "")
