@@ -106,7 +106,7 @@ public class TestClient {
         NotificationTopicPreference conf = new NotificationTopicPreference();
         conf.setUserId(profile.getUserId());
         conf.setSourceId(profile.getSourceUserStore());
-        conf.setSoftCompId(profile.getSoftwareComponentId());
+        conf.setSoftwareComponentId(profile.getSoftwareComponentId());
         conf.setNotificationTopicId(topicId);
         conf.setPrefChannel(channel);
 
@@ -138,7 +138,7 @@ public class TestClient {
         UserContactDetail conf = new UserContactDetail();
         conf.setUserId(profile.getUserId());
         conf.setSourceId(profile.getSourceUserStore());
-        conf.setSoftCompId(profile.getSoftwareComponentId());
+        conf.setSoftwareComponentId(profile.getSoftwareComponentId());
         conf.setCommunicationChannel(channel);
         conf.setChannelDetail(detail);
 
@@ -178,8 +178,8 @@ public class TestClient {
         try {
             String
                     query =
-                    "{\"where\":{\"userId\":\"" + userId + "\",\"softwareComponentId\":\"" + softCompId
-                    + "\",\"notiflang\":\"" + suppLang + "\",\"sourceUserStore\":\"" + sourceUserStore + "\"}}";
+                    "{\"where\":{\"userId\":\"" + userId + "\",\"sourceUserStore\":\"" + sourceUserStore
+                    + "\",\"softwareComponentId\":\"" + softCompId + "\"}}";
             res = confApi.userNotificationProfileFind(query);
         } catch (ApiException e) {
             ; // ignore
@@ -190,8 +190,7 @@ public class TestClient {
             return resConfig;
         } else {
             _LOG.log(Level.INFO, "exists:" + gson.toJson(res));
-            //return gson.fromJson(res,NotificationTopic.class);
-            return null;
+            return res.get(0);
         }
     }
 
