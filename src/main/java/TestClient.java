@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -111,12 +112,15 @@ public class TestClient {
         conf.setNotificationTopicId(topicId);
         conf.setPrefChannel(channel);
 
-        String
-                query =
-                "{\"where\":{\"userId\":\"" + profile.getUserId() + "\",\"softwareComponentId\":\"" + profile.getSoftwareComponentId()
-                + "\",\"sourceId\":\"" + profile.getSourceUserStore() + "\",\"notificationTopicId\":\"" + topicId + "\",\"prefChannel\":\""
-                + channel + "\"}}";
-        List<NotificationTopicPreference> res = confApi.notificationTopicPreferenceFind(query);
+        List<NotificationTopicPreference> res = new LinkedList<NotificationTopicPreference>();
+        try {
+            String
+                    query =
+                    "{\"where\":{\"userId\":\"" + profile.getUserId() + "\",\"softwareComponentId\":\"" + profile.getSoftwareComponentId()
+                    + "\",\"sourceId\":\"" + profile.getSourceUserStore() + "\",\"notificationTopicId\":\"" + topicId + "\",\"prefChannel\":\""
+                    + channel + "\"}}";
+            res = confApi.notificationTopicPreferenceFind(query);
+        } catch (ApiException ignored) {}
         if (res.size() == 0) {
             NotificationTopicPreference resConfig = confApi.notificationTopicPreferenceCreate(conf);
             _LOG.log(Level.INFO, gson.toJson(resConfig));
@@ -139,12 +143,15 @@ public class TestClient {
         conf.setCommunicationChannel(channel);
         conf.setChannelDetail(detail);
 
-        String
-                query =
-                "{\"where\":{\"userId\":\"" + profile.getUserId() + "\",\"softwareComponentId\":\"" + profile.getSoftwareComponentId()
-                + "\",\"sourceId\":\"" + profile.getSourceUserStore() + "\",\"communicationChannel\":\"" + channel + "\",\"channelDetail\":\""
-                + detail + "\"}}";
-        List<UserContactDetail> res = confApi.userContactDetailFind(query);
+        List<UserContactDetail> res = new LinkedList<UserContactDetail>();
+        try {
+            String
+                    query =
+                    "{\"where\":{\"userId\":\"" + profile.getUserId() + "\",\"softwareComponentId\":\"" + profile.getSoftwareComponentId()
+                    + "\",\"sourceId\":\"" + profile.getSourceUserStore() + "\",\"communicationChannel\":\"" + channel + "\",\"channelDetail\":\""
+                    + detail + "\"}}";
+            res = confApi.userContactDetailFind(query);
+        } catch (ApiException ignored) {}
         if (res.size() == 0) {
             UserContactDetail resConfig = confApi.userContactDetailCreate(conf);
             _LOG.log(Level.INFO, gson.toJson(resConfig));
@@ -167,11 +174,14 @@ public class TestClient {
         conf.setSoftwareComponentId(softCompId);
         conf.setSourceUserStore(sourceUserStore);
 
-        String
-                query =
-                "{\"where\":{\"userId\":\"" + userId + "\",\"sourceUserStore\":\"" + sourceUserStore
-                + "\",\"softwareComponentId\":\"" + softCompId + "\"}}";
-        List<UserNotificationProfile> res = confApi.userNotificationProfileFind(query);
+        List<UserNotificationProfile> res = new LinkedList<UserNotificationProfile>();
+        try {
+            String
+                    query =
+                    "{\"where\":{\"userId\":\"" + userId + "\",\"sourceUserStore\":\"" + sourceUserStore
+                    + "\",\"softwareComponentId\":\"" + softCompId + "\"}}";
+            res = confApi.userNotificationProfileFind(query);
+        } catch (ApiException ignored) {}
         if (res.size() == 0) {
             UserNotificationProfile resConfig = confApi.userNotificationProfileCreate(conf);
             _LOG.log(Level.INFO, gson.toJson(resConfig));
@@ -194,10 +204,14 @@ public class TestClient {
         conf.setSoftwareComponentId(softCompId);
         conf.setSupportedCommChannelId(suppChannelId);
         conf.setSupportedLanguageId(suppLangId);
-        String query =
-                "{\"where\":{\"notificationTopicId\":\"" + notTopicId + "\",\"softwareComponentId\":\"" + softCompId
-                + "\",\"supportedLanguageId\":\"" + suppLangId + "\",\"supportedCommChannelId\":\"" + suppChannelId + "\"}}";
-        List<NotificationTopicConfig> res = confApi.notificationTopicConfigFind(query);
+
+        List<NotificationTopicConfig> res = new LinkedList<NotificationTopicConfig>();
+        try {
+            String query =
+                    "{\"where\":{\"notificationTopicId\":\"" + notTopicId + "\",\"softwareComponentId\":\"" + softCompId
+                    + "\",\"supportedLanguageId\":\"" + suppLangId + "\",\"supportedCommChannelId\":\"" + suppChannelId + "\"}}";
+            res = confApi.notificationTopicConfigFind(query);
+        } catch (ApiException ignored) {}
         if (res.size() == 0) {
             NotificationTopicConfig resConfig = confApi.notificationTopicConfigCreate(conf);
             _LOG.log(Level.INFO, gson.toJson(resConfig));
@@ -220,8 +234,12 @@ public class TestClient {
         Theme theme = new Theme();
         theme.setTitle(title);
         theme.setDescription(description);
-        String query = "{\"where\":{\"title\":\"" + title + "\"}}";
-        List<Theme> themes = themeApi.themeFind(query);
+
+        List<Theme> themes = new LinkedList<Theme>();
+        try {
+            String query = "{\"where\":{\"title\":\"" + title + "\"}}";
+            themes = themeApi.themeFind(query);
+        } catch (ApiException ignored) {}
         if (themes == null || themes.size() == 0) {
             final Theme resTheme = themeApi.themeCreate(theme);
             _LOG.log(Level.INFO, gson.toJson(resTheme));
@@ -239,7 +257,11 @@ public class TestClient {
         nTopic.setDescription(desc);
         nTopic.setThemeId(themeid);
         nTopic.setTitle(id);
-        String res = notApi.notificationTopicGetTopicByTitle(nTopic.getTitle());
+
+        String res = null;
+        try {
+            res = notApi.notificationTopicGetTopicByTitle(nTopic.getTitle());
+        } catch (ApiException ignored) {}
         if (res == null) {
             final NotificationTopic resNottop = notApi.notificationTopicCreate(nTopic);
             _LOG.log(Level.INFO, gson.toJson(resNottop));
@@ -253,7 +275,11 @@ public class TestClient {
     private SupportedCommChannel createChannel(ApiClient apiClient, String s) throws ApiException {
         _LOG.log(Level.INFO, "->create Supported Channel:");
         SupportedCommChannelApi capi = new SupportedCommChannelApi(apiClient);
-        SupportedCommChannel supportedCommChannel = capi.supportedCommChannelFindById(s, null);
+        SupportedCommChannel supportedCommChannel = null;
+
+        try {
+            supportedCommChannel = capi.supportedCommChannelFindById(s, null);
+        } catch (ApiException ignored) {}
         if (supportedCommChannel == null) {
             SupportedCommChannel supc = new SupportedCommChannel();
             supc.setSuppChannel(s);
@@ -269,7 +295,11 @@ public class TestClient {
     private SupportedLanguage createLanguage(ApiClient apiClient, String s) throws ApiException {
         _LOG.log(Level.INFO, "->create Supported Language:");
         SupportedLanguageApi supApi = new SupportedLanguageApi(apiClient);
-        SupportedLanguage supportedLanguage = supApi.supportedLanguageFindById(s, null);
+        SupportedLanguage supportedLanguage = null;
+
+        try {
+            supportedLanguage = supApi.supportedLanguageFindById(s, null);
+        } catch (ApiException ignored) {}
         if (supportedLanguage == null) {
             SupportedLanguage suplang = new SupportedLanguage();
             suplang.setSuppLang(s);
@@ -282,18 +312,15 @@ public class TestClient {
         }
     }
 
-    private ApiClient createApiClient(String apikey, String uri) {
-        ApiClient apiClient = new ApiClient();
-        apiClient.setApiKey(apikey);
-        apiClient.setBasePath(uri);
-        return apiClient;
-    }
-
     private SoftwareComponent createSoftwareComponent(ApiClient apiClient, String type, String name, String parentId, String version)
             throws ApiException {
         _LOG.log(Level.INFO, "->create Software Component:");
         SoftwareComponentApi softwareComponentApi = new SoftwareComponentApi(apiClient);
-        String s = softwareComponentApi.softwareComponentGetComponentByName(name);
+
+        String s = null;
+        try {
+            s = softwareComponentApi.softwareComponentGetComponentByName(name);
+        } catch (ApiException ignored) {}
         if (s == null) {
             SoftwareComponent sc = new SoftwareComponent();
             sc.name(name);
@@ -308,5 +335,12 @@ public class TestClient {
             _LOG.log(Level.INFO, "exists:" + gson.toJson(s));
             return gson.fromJson(s, SoftwareComponent.class);//resSc;
         }
+    }
+
+    private ApiClient createApiClient(String apikey, String uri) {
+        ApiClient apiClient = new ApiClient();
+        apiClient.setApiKey(apikey);
+        apiClient.setBasePath(uri);
+        return apiClient;
     }
 }
