@@ -107,7 +107,7 @@ public class TestClient {
         NotificationTopicPreferenceApi confApi = new NotificationTopicPreferenceApi(apiClient);
         NotificationTopicPreference conf = new NotificationTopicPreference();
         conf.setUserId(profile.getUserId());
-        conf.setSourceId(profile.getSourceUserStore());
+        conf.setSourceUserStore(profile.getSourceUserStore());
         conf.setSoftwareComponentId(profile.getSoftwareComponentId());
         conf.setNotificationTopicId(topicId);
         conf.setPrefChannel(channel);
@@ -117,7 +117,7 @@ public class TestClient {
             String
                     query =
                     "{\"where\":{\"userId\":\"" + profile.getUserId() + "\",\"softwareComponentId\":\"" + profile.getSoftwareComponentId()
-                    + "\",\"sourceId\":\"" + profile.getSourceUserStore() + "\",\"notificationTopicId\":\"" + topicId + "\",\"prefChannel\":\""
+                    + "\",\"sourceUserStore\":\"" + profile.getSourceUserStore() + "\",\"notificationTopicId\":\"" + topicId + "\",\"prefChannel\":\""
                     + channel + "\"}}";
             res = confApi.notificationTopicPreferenceFind(query);
         } catch (ApiException ignored) {}
@@ -138,7 +138,7 @@ public class TestClient {
         UserContactDetailApi confApi = new UserContactDetailApi(apiClient);
         UserContactDetail conf = new UserContactDetail();
         conf.setUserId(profile.getUserId());
-        conf.setSourceId(profile.getSourceUserStore());
+        conf.setSourceUserStore(profile.getSourceUserStore());
         conf.setSoftwareComponentId(profile.getSoftwareComponentId());
         conf.setCommunicationChannel(channel);
         conf.setChannelDetail(detail);
@@ -148,7 +148,7 @@ public class TestClient {
             String
                     query =
                     "{\"where\":{\"userId\":\"" + profile.getUserId() + "\",\"softwareComponentId\":\"" + profile.getSoftwareComponentId()
-                    + "\",\"sourceId\":\"" + profile.getSourceUserStore() + "\",\"communicationChannel\":\"" + channel + "\",\"channelDetail\":\""
+                    + "\",\"sourceUserStore\":\"" + profile.getSourceUserStore() + "\",\"communicationChannel\":\"" + channel + "\",\"channelDetail\":\""
                     + detail + "\"}}";
             res = confApi.userContactDetailFind(query);
         } catch (ApiException ignored) {}
