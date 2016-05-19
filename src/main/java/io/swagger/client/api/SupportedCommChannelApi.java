@@ -111,7 +111,7 @@ public class SupportedCommChannelApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<SupportedCommChannel> localVarReturnType = new GenericType<SupportedCommChannel>() {};
@@ -159,7 +159,7 @@ public class SupportedCommChannelApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -207,7 +207,7 @@ public class SupportedCommChannelApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -255,7 +255,7 @@ public class SupportedCommChannelApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -299,7 +299,7 @@ public class SupportedCommChannelApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<List<SupportedCommChannel>> localVarReturnType = new GenericType<List<SupportedCommChannel>>() {};
@@ -350,7 +350,7 @@ public class SupportedCommChannelApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<SupportedCommChannel> localVarReturnType = new GenericType<SupportedCommChannel>() {};
@@ -399,7 +399,7 @@ public class SupportedCommChannelApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<SupportedCommChannel> localVarReturnType = new GenericType<SupportedCommChannel>() {};
@@ -441,7 +441,7 @@ public class SupportedCommChannelApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<SupportedCommChannel> localVarReturnType = new GenericType<SupportedCommChannel>() {};

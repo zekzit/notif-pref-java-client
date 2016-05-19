@@ -111,7 +111,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<NotificationTopic> localVarReturnType = new GenericType<NotificationTopic>() {};
@@ -159,7 +159,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -207,7 +207,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -255,7 +255,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -299,7 +299,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<List<NotificationTopic>> localVarReturnType = new GenericType<List<NotificationTopic>>() {};
@@ -350,7 +350,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<NotificationTopic> localVarReturnType = new GenericType<NotificationTopic>() {};
@@ -399,7 +399,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<String> localVarReturnType = new GenericType<String>() {};
@@ -456,7 +456,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -505,7 +505,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -554,7 +554,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -603,7 +603,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<String> localVarReturnType = new GenericType<String>() {};
@@ -652,7 +652,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<NotificationTopic> localVarReturnType = new GenericType<NotificationTopic>() {};
@@ -694,7 +694,7 @@ public class NotificationTopicApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<NotificationTopic> localVarReturnType = new GenericType<NotificationTopic>() {};

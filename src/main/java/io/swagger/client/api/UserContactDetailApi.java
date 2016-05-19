@@ -111,7 +111,7 @@ public class UserContactDetailApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<UserContactDetail> localVarReturnType = new GenericType<UserContactDetail>() {};
@@ -159,7 +159,7 @@ public class UserContactDetailApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -207,7 +207,7 @@ public class UserContactDetailApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -255,7 +255,7 @@ public class UserContactDetailApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -299,7 +299,7 @@ public class UserContactDetailApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<List<UserContactDetail>> localVarReturnType = new GenericType<List<UserContactDetail>>() {};
@@ -350,7 +350,7 @@ public class UserContactDetailApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<UserContactDetail> localVarReturnType = new GenericType<UserContactDetail>() {};
@@ -399,7 +399,7 @@ public class UserContactDetailApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<UserContactDetail> localVarReturnType = new GenericType<UserContactDetail>() {};
@@ -441,7 +441,7 @@ public class UserContactDetailApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<UserContactDetail> localVarReturnType = new GenericType<UserContactDetail>() {};

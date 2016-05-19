@@ -126,7 +126,7 @@ public class UserNotificationProfileApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -168,7 +168,7 @@ public class UserNotificationProfileApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<UserNotificationProfile> localVarReturnType = new GenericType<UserNotificationProfile>() {};
@@ -223,7 +223,7 @@ public class UserNotificationProfileApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
@@ -267,7 +267,7 @@ public class UserNotificationProfileApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<List<UserNotificationProfile>> localVarReturnType = new GenericType<List<UserNotificationProfile>>() {};
@@ -324,7 +324,7 @@ public class UserNotificationProfileApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<UserNotificationProfile> localVarReturnType = new GenericType<UserNotificationProfile>() {};
@@ -381,7 +381,7 @@ public class UserNotificationProfileApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<UserNotificationProfile> localVarReturnType = new GenericType<UserNotificationProfile>() {};
@@ -423,7 +423,7 @@ public class UserNotificationProfileApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] {  };
+    String[] localVarAuthNames = new String[] { "kongApiKey" };
 
     
     GenericType<UserNotificationProfile> localVarReturnType = new GenericType<UserNotificationProfile>() {};

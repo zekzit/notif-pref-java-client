@@ -28,9 +28,11 @@ public class TestClient {
 
     public static void main(final String... args) {
         final TestClient tc = new TestClient();
-        //ApiClient apiClient = tc.createApiClient("9ef64835-7d68-4ae8-b6ec-5df25aec186f","https://api-gw-o.antwerpen.be/acpaas/userprefs/v1");
-        //ApiClient apiClient = tc.createApiClient("5c044f41-3836-4a28-9809-823ce04481ca","https://devprefapi.t1t.be/api/v1");//http://localhost:3001/api/v1
-        final ApiClient apiClient = tc.createApiClient("5c044f41-3836-4a28-9809-823ce04481ca", "http://localhost:3001/api/v1/");
+        ApiClient apiClient = tc.createApiClient("9ef64835-7d68-4ae8-b6ec-5df25aec186f","https://api-gw-o.antwerpen.be/acpaas/userprefs/v1");
+//        ApiClient apiClient = tc.createApiClient("0048baa8-a58b-431b-af5d-2761aaac7e08","https://api-gw-o.antwerpen.be/acpaas/userprefs/v1");
+//        ApiClient apiClient = tc.createApiClient("5c044f41-3836-4a28-9809-823ce04481ca","https://devprefapi.t1t.be/api/v1");//http://localhost:3001/api/v1
+//        final ApiClient apiClient = tc.createApiClient("5c044f41-3836-4a28-9809-823ce04481ca", "http://localhost:3001/api/v1/");
+//        final ApiClient apiClient = tc.createApiClient("5c044f41-3836-4a28-9809-823ce04481ca", "https://devapim.t1t.be:443/mpc/prefs/v1");
         tc.execUC1(apiClient);
     }
 
@@ -79,18 +81,12 @@ public class TestClient {
                     false
             );
             //USER NOTIF PROFILE
-            final UserNotificationProfile
-                    profile01 =
-                    createUserProfile(apiClient, softCompSC01A.getGuid(), lang01.getSuppLang(), "test-01@example.be", "sourceUserStore");
-            final UserNotificationProfile
-                    profile02 =
-                    createUserProfile(apiClient, softCompSC01A.getGuid(), lang02.getSuppLang(), "test-02@example.be", "sourceUserStore");
+            final UserNotificationProfile profile01 = createUserProfile(apiClient, softCompSC01A.getGuid(), lang01.getSuppLang(), "CheckMK", "AD");
+            final UserNotificationProfile profile02 = createUserProfile(apiClient, softCompSC01A.getGuid(), lang02.getSuppLang(), "michallis@example.be", "AD");
 
             //USER CONTACT DETAILS
-            final UserContactDetail profile01Contact = createUserContactDetail(apiClient, profile01, channel01.getSuppChannel(), "0123456789");
-            final UserContactDetail
-                    profile02Contact =
-                    createUserContactDetail(apiClient, profile02, channel02.getSuppChannel(), "test-02@example.be");
+            final UserContactDetail profile01Contact = createUserContactDetail(apiClient, profile01, channel02.getSuppChannel(), "da_apie_team@digipolis.be");
+            final UserContactDetail profile02Contact = createUserContactDetail(apiClient, profile02, channel01.getSuppChannel(), "0123456789");
 
             //NOTIF TOPIC PREF
             final NotificationTopicPreference
@@ -320,7 +316,10 @@ public class TestClient {
         String s = null;
         try {
             s = softwareComponentApi.softwareComponentGetComponentByName(name);
-        } catch (ApiException ignored) {}
+        } catch (ApiException ignored) {
+            ignored.printStackTrace();
+            return null;
+        }
         if (s == null) {
             SoftwareComponent sc = new SoftwareComponent();
             sc.name(name);
