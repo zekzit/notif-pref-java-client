@@ -1,8 +1,8 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 
@@ -15,8 +15,9 @@ public class UserContactDetail   {
   private String communicationChannel = null;
   private String channelDetail = null;
   private String id = null;
-  private String sourceId = null;
+  private String sourceUserStore = null;
   private String userId = null;
+  private String softwareComponentId = null;
 
   
   /**
@@ -72,18 +73,18 @@ public class UserContactDetail   {
   
   /**
    **/
-  public UserContactDetail sourceId(String sourceId) {
-    this.sourceId = sourceId;
+  public UserContactDetail sourceUserStore(String sourceId) {
+    this.sourceUserStore = sourceId;
     return this;
   }
   
   @ApiModelProperty(example = "null", required = true, value = "")
-  @JsonProperty("sourceId")
-  public String getSourceId() {
-    return sourceId;
+  @JsonProperty("sourceUserStore")
+  public String getSourceUserStore() {
+    return sourceUserStore;
   }
-  public void setSourceId(String sourceId) {
-    this.sourceId = sourceId;
+  public void setSourceUserStore(String sourceUserStore) {
+    this.sourceUserStore = sourceUserStore;
   }
 
   
@@ -103,7 +104,21 @@ public class UserContactDetail   {
     this.userId = userId;
   }
 
-  
+  /**
+   **/
+  public UserContactDetail softwareComponentId(String softwareComponentId) {
+    this.softwareComponentId = softwareComponentId;
+    return this;
+  }
+
+  @ApiModelProperty(example = "null", value = "")
+  @JsonProperty("softwareComponentId")
+  public String getSoftwareComponentId() {
+    return softwareComponentId;
+  }
+  public void setSoftwareComponentId(final String softwareComponentId) {
+    this.softwareComponentId = softwareComponentId;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -115,15 +130,16 @@ public class UserContactDetail   {
     }
     UserContactDetail userContactDetail = (UserContactDetail) o;
     return Objects.equals(this.communicationChannel, userContactDetail.communicationChannel) &&
-        Objects.equals(this.channelDetail, userContactDetail.channelDetail) &&
-        Objects.equals(this.id, userContactDetail.id) &&
-        Objects.equals(this.sourceId, userContactDetail.sourceId) &&
-        Objects.equals(this.userId, userContactDetail.userId);
+           Objects.equals(this.channelDetail, userContactDetail.channelDetail) &&
+           Objects.equals(this.id, userContactDetail.id) &&
+           Objects.equals(this.sourceUserStore, userContactDetail.sourceUserStore) &&
+           Objects.equals(this.softwareComponentId, userContactDetail.softwareComponentId) &&
+           Objects.equals(this.userId, userContactDetail.userId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(communicationChannel, channelDetail, id, sourceId, userId);
+    return Objects.hash(communicationChannel, channelDetail, id, sourceUserStore, userId, softwareComponentId);
   }
 
   @Override
@@ -134,8 +150,9 @@ public class UserContactDetail   {
     sb.append("    communicationChannel: ").append(toIndentedString(communicationChannel)).append("\n");
     sb.append("    channelDetail: ").append(toIndentedString(channelDetail)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
+    sb.append("    sourceUserStore: ").append(toIndentedString(sourceUserStore)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    softwareComponentId: ").append(toIndentedString(softwareComponentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

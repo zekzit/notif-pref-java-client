@@ -1,8 +1,8 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 
@@ -15,6 +15,7 @@ public class UserNotificationProfile   {
   private String userId = null;
   private String notifLang = null;
   private String sourceUserStore = null;
+  private String softwareComponentId = null;
 
   
   /**
@@ -67,7 +68,21 @@ public class UserNotificationProfile   {
     this.sourceUserStore = sourceUserStore;
   }
 
-  
+  /**
+   **/
+  public UserNotificationProfile softwareComponentId(String softwareComponentId) {
+    this.softwareComponentId = softwareComponentId;
+    return this;
+  }
+
+  @ApiModelProperty(example = "null", required = true, value = "")
+  @JsonProperty("softwareComponentId")
+  public String getSoftwareComponentId() {
+    return softwareComponentId;
+  }
+  public void setSoftwareComponentId(final String softwareComponentId) {
+    this.softwareComponentId = softwareComponentId;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -80,12 +95,13 @@ public class UserNotificationProfile   {
     UserNotificationProfile userNotificationProfile = (UserNotificationProfile) o;
     return Objects.equals(this.userId, userNotificationProfile.userId) &&
         Objects.equals(this.notifLang, userNotificationProfile.notifLang) &&
+        Objects.equals(this.softwareComponentId, userNotificationProfile.softwareComponentId) &&
         Objects.equals(this.sourceUserStore, userNotificationProfile.sourceUserStore);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, notifLang, sourceUserStore);
+    return Objects.hash(userId, notifLang, sourceUserStore, softwareComponentId);
   }
 
   @Override
@@ -96,6 +112,7 @@ public class UserNotificationProfile   {
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    notifLang: ").append(toIndentedString(notifLang)).append("\n");
     sb.append("    sourceUserStore: ").append(toIndentedString(sourceUserStore)).append("\n");
+    sb.append("    softwareComponentId: ").append(toIndentedString(softwareComponentId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
