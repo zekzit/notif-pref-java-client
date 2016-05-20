@@ -28,7 +28,8 @@ public class TestClient {
 
     public static void main(final String... args) {
         final TestClient tc = new TestClient();
-        ApiClient apiClient = tc.createApiClient("9ef64835-7d68-4ae8-b6ec-5df25aec186f","https://api-gw-o.antwerpen.be/acpaas/userprefs/v1");
+//        ApiClient apiClient = tc.createApiClient("9ef64835-7d68-4ae8-b6ec-5df25aec186f","https://api-gw-o.antwerpen.be/acpaas/userprefs/v1");
+        ApiClient apiClient = tc.createApiClient("29a231ba-b137-4bd9-8779-dea9aa2d3078","https://api-gw-a.antwerpen.be/trust1team/userprefs/v1");
 //        ApiClient apiClient = tc.createApiClient("0048baa8-a58b-431b-af5d-2761aaac7e08","https://api-gw-o.antwerpen.be/acpaas/userprefs/v1");
 //        ApiClient apiClient = tc.createApiClient("5c044f41-3836-4a28-9809-823ce04481ca","https://devprefapi.t1t.be/api/v1");//http://localhost:3001/api/v1
 //        final ApiClient apiClient = tc.createApiClient("5c044f41-3836-4a28-9809-823ce04481ca", "http://localhost:3001/api/v1/");
@@ -66,7 +67,7 @@ public class TestClient {
                     apiClient,
                     softCompSC01A.getGuid(),
                     notTopic01.getId(),
-                    channel01.getSuppChannel(),
+                    channel02.getSuppChannel(),
                     lang01.getSuppLang(),
                     true,
                     true
@@ -75,7 +76,7 @@ public class TestClient {
                     apiClient,
                     softCompSC01A.getGuid(),
                     notTopic01.getId(),
-                    channel01.getSuppChannel(),
+                    channel02.getSuppChannel(),
                     lang02.getSuppLang(),
                     true,
                     false
@@ -86,12 +87,10 @@ public class TestClient {
 
             //USER CONTACT DETAILS
             final UserContactDetail profile01Contact = createUserContactDetail(apiClient, profile01, channel02.getSuppChannel(), "da_apie_team@digipolis.be");
-            final UserContactDetail profile02Contact = createUserContactDetail(apiClient, profile02, channel01.getSuppChannel(), "0123456789");
+            final UserContactDetail profile02Contact = createUserContactDetail(apiClient, profile02, channel02.getSuppChannel(), "0123456789");
 
             //NOTIF TOPIC PREF
-            final NotificationTopicPreference
-                    userPreference01 =
-                    createUserPreference(apiClient, notTopic01.getId(), profile01, channel01.getSuppChannel());
+            final NotificationTopicPreference userPreference01 = createUserPreference(apiClient, notTopic01.getId(), profile01, channel02.getSuppChannel());
         } catch (ApiException e) {
             e.printStackTrace();
         }
@@ -316,10 +315,7 @@ public class TestClient {
         String s = null;
         try {
             s = softwareComponentApi.softwareComponentGetComponentByName(name);
-        } catch (ApiException ignored) {
-            ignored.printStackTrace();
-            return null;
-        }
+        } catch (ApiException ignored) { }
         if (s == null) {
             SoftwareComponent sc = new SoftwareComponent();
             sc.name(name);
