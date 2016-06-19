@@ -1,8 +1,14 @@
 language: java
 
+notifications:
+  hipchat: fcb7c0fab84ac9494e1aa893ef6028@T1T-Build
+
 cache:
   directories:
   - ~/.m2
+
+os:
+  - linux
 
 branches:
   only:
