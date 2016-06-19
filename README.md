@@ -1,4 +1,4 @@
-# swagger-java-client 
+# swagger-java-client [![Build Status](https://travis-ci.com/Trust1Team/notif-pref-java-client.svg?token=eUEn2WqVpepdMsSFZWqZ&branch=master)](https://travis-ci.com/Trust1Team/notif-pref-java-client)
 
 ## Requirements
 
