@@ -83,7 +83,6 @@ public class ApiClient {
   /**
    * Build the Client used to make HTTP requests with the latest settings,
    * i.e. objectMapper and debugging.
-   * TODO: better to use the Builder Pattern?
    */
   public ApiClient rebuildHttpClient() {
     // Add the JSON serialization support to Jersey
